@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Pokedex</title>
+        <link rel="stylesheet" type="text/css" href="main.css">
+    </head>
+    <body>
+        <div class="header">
+            <div class="titulo"><h1>Pokedex</h1></div>
+            <div><img class="imagentitulo" id="imagentitulo" src="pokemon.png" alt="pokemonlogo"/></div>
+        </div>
+        <div class="contenedor">
+            <div class="izq"></div>
+            <div class="centro">
+                <div class="cont-buscador">
+                    <div class="busqueda"><input type="text" id="buscador" class="texto" placeholder="Buscar: 1, pikachu..."/></div>
+                    <div class="btn-bus"><input type="submit" id="btn_busc" class="btn" value="Buscar"/></div>
+                    <div class="btn-next"><input type="submit" id="btn_next" class="btn" value="Ver 20 siguientes"/></div>
+                </div>
+                <div id="mensaje"></div>
+                <div class="content" aria-label="catálogo de pokemon">
+                    <div id="pok" class="pok"></div>
+                    <div id="barra" class="barra">
+                        <table id= "tabla"></table>
+                    </div>
+                </div>
+                <div id="pok1" class="pok1"></div>       
+                <div class="botonabajo"><input type="submit" id="btn_next2" class="btn" value="Ver 20 siguientes"/></div>
+            </div>
+            <div class="der"></div>
+        </div>
+        <div class="footer"></div>
+    <script src="main.js"></script> 
+    </body>
+</html>
+

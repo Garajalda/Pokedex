@@ -1,0 +1,404 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    font-family: PT Sans;
+    color: rgb(0, 0, 34);
+}
+
+body{
+    background-color:#ECECEB;
+}
+
+#btn_next2{
+    width: 20%;
+}
+
+.botonabajo{
+    display: flex;
+    justify-content: center;
+}
+
+.imagentitulo{
+    width: 100px; 
+    height: 150px;
+}
+
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.centro{
+    display: flex;    
+    flex-wrap: wrap;
+    width: 70%;
+    background-color: rgb(243, 243, 243);
+    flex-direction: column;
+}
+
+.izq{   
+    background-color: rgb(255, 255, 255);
+    width: 15%;
+}
+
+.der{    
+    background-color: rgb(255, 255, 255);
+    width: 15%;
+}
+
+.tabla{
+    margin: 1px solid;
+}
+
+.cont-buscador{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    margin-bottom: 40px;
+}
+
+.pok{
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin-bottom: 10px;    
+}
+
+.pok1{
+    width: 100%;
+    display: flex;
+    box-sizing: border-box;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+.carta{
+    border: 1px solid rgb(218, 218, 218);
+    padding: 10px;
+    width: 20%;
+    border-radius: 5px;
+    box-shadow: 10px 10px 15px -15px #818181;
+    margin: 5px;
+}
+
+.carta1{
+    margin:4px;
+    border: 1px solid rgb(218, 218, 218);
+    padding: 10px;
+    width: 20%;
+    border-radius: 5px;
+    box-shadow: 10px 10px 15px -15px #818181;    
+}
+
+.barra{    
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+table{
+    width: 70%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+th, td {
+    padding: 5px;
+    border: 1px solid rgb(218, 218, 218);
+    text-align: center;    
+}
+
+.tipo{
+    display: flex;
+}
+
+.tipo1{
+    display: flex;
+}
+
+.contenido-carta{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.img-pok{
+    background-color: rgb(231, 231, 231);
+    border-radius: 10px;
+    border: 1px solid  rgb(231, 231, 231);
+    max-width: 100%;    
+}
+
+.texto{
+    border: 2px solid gray;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    width: 400px;
+}
+
+.btn{
+    background-color: #2E383F;
+    border: 1px solid #2E383F;
+    border-radius: 3px;
+    padding-top: 10px;
+    padding-bottom: 12px;
+    margin-left: 2px;
+    margin-right: 2px;
+    color: aliceblue;
+}
+
+.footer{
+    width: 100%;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+}
+
+@media only screen and (max-width: 1300px){
+    
+    #btn_next2{
+        width: 100%;
+    }
+    
+    .carta{
+        width: 84%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;    
+    }
+
+    .carta1{
+        width: 84%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;    
+    }
+
+    .centro{
+        display: flex;
+        align-items: center;
+    }
+    
+    .cont-buscador{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+    }
+
+    .texto{
+        width: 100%;
+    }
+
+    .btn{
+        margin-left: 4px;
+        width: 96%;
+    }
+
+    .tabla-pok thead{
+        display: none;
+    }
+
+    .tabla-pok, .tabla-pok tbody,.tabla-pok tr, .tabla-pok td{
+        display: block;
+        width: 85%;
+    }
+
+    .tabla-pok tr{
+        margin-bottom: 15px;
+    }
+
+    .tabla-pok td{
+        text-align: right;
+        padding-left: 50%;
+        text-align: right;
+        position: relative;
+    }
+
+    .tabla-pok td::before{
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 50%;
+        font-size: 15px;
+        font-weight: bold;
+        text-align: left;
+    }
+
+	.content{
+        width: 90%;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+    }
+    
+    .img{
+        width: 100%;
+        max-width: 210px;
+    }
+}
+
+@media screen and (max-width: 1500px ){
+    .img-pok{
+        background-color: rgb(231, 231, 231);
+        border-radius: 10px;
+        border: 1px solid  rgb(231, 231, 231);
+        max-width: 100%;
+        width: 100%;
+        flex-wrap: wrap;
+    }
+}
+
+.errorvacio{
+    color: azure;
+}
+
+#mensaje{
+    text-align: center;
+    background-color: #F9A828;
+    margin-bottom: 5px;
+}
+
+.header{
+    justify-content: center;
+    display: flex;
+    background-color: #07617D;
+    color: aliceblue;
+    font-size: 30px;
+    align-items: center;    
+}
+
+.fire{
+    background-color: orange;
+    border: 1px solid orange;
+    border-radius: 5px;
+    width: 20px;
+    color: azure;
+}
+
+.grass{
+    background-color: green;
+    border: 1px solid green;
+    border-radius: 5px;    
+    color: azure;
+}
+
+.poison{
+    background-color: blueviolet;
+    border: 1px solid blueviolet;
+    border-radius: 5px; 
+    color: azure;
+}
+
+.flying{
+    background-color: rgb(127, 197, 255);
+    border: 1px solid rgb(127, 197, 255);
+    border-radius: 5px;
+    color: azure;
+}
+
+.bug{
+    background-color: rgb(133, 255, 133);
+    border: 1px solid rgb(133, 255, 133);
+    border-radius: 5px; 
+    color: azure;
+}
+
+.normal{
+    background-color: gray;
+    border: solid gray 1px;
+    border-radius: 5px;
+    color: azure;
+}
+
+.electric{
+    background-color: rgb(255, 230, 0);
+    border: rgb(255, 230, 0) solid 1px;
+    border-radius: 5px;
+    color: azure;
+}
+
+.ground{
+    background-color: rgb(179, 146, 0);
+    border: 1px solid rgb(179, 146, 0);
+    border-radius: 5px;
+    color: azure;
+}
+
+.water{
+    background-color:blue;
+    border: 1px solid blue;
+    border-radius: 5px;
+    color: azure;
+}
+
+.psychic{
+    background-color:palevioletred;
+    border: 1px solid palevioletred;
+    border-radius: 5px;
+    color: azure;
+}
+
+.fighting{
+    background-color:maroon;
+    border: 1px solid maroon;
+    border-radius: 5px;
+    color: azure;
+}
+
+.rock{
+    background-color:brown;
+    border: 1px solid brown;
+    border-radius: 5px;
+    color: azure;
+}
+
+.steel{
+    background-color:rgb(123, 147, 167);
+    border: 1px solid rgb(123, 147, 167);
+    border-radius: 5px;
+    color: azure;
+}
+
+.fairy{
+    background-color:rgb(216, 137, 212);
+    border: 1px solid rgb(216, 137, 212);
+    border-radius: 5px;
+    color: azure;
+}
+
+.dragon{
+    background-color: darkblue;
+    border: 1px solid darkblue;
+    border-radius: 5px;
+    color: azure;
+}
+
+.ghost{
+    background-color: darkslateblue;
+    border: 1px solid darkslateblue;
+    border-radius: 5px;
+    color: azure;
+}
+
+.dark{
+    background-color: rgb(53, 51, 51);
+    border: 1px solid rgb(53, 51, 51);
+    border-radius: 5px;
+    color: azure;
+}
+
+.ice{
+    background-color: lightblue;
+    border: 1px solid lightblue;
+    border-radius: 5px;
+    color: azure;
+}
