@@ -1,50 +1,50 @@
 
 const formulario = document.querySelector('#buscador');
-const botonbuscar = document.querySelector('#btn_busc');
-const botonnext = document.querySelector('#btn_next');
-const botonnext2 = document.querySelector('#btn_next2');
-const barra = document.getElementById('barra');
-let numeroactual = 0;
-const pokemonArray = [];
-let botonbusquedahecha = false;
+const boton = document.querySelector('#btn_busc');
+const barra = document.getElementById('barra')
 
-function borrarTabla(valor){
-    if (valor==false){
-        barra.innerHTML = `
-                
-         `
-    }
-}
 
+
+    var j = 20;
+
+    function noseque(){
+        
+        j = j + 20;
+        console.log(j);
+        fetchPokemon()
+        }
 
 const fetchPokemon = async () => {
     const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
-    if (pokemonArray.length == 0){   
-        for(let i = 1; i <= 898; i++){
-            pokemonArray.push(fetch(getPokemonUrl(i)).then(response =>{ 
-                if(response.ok){
-                    return response.json()
-                }else{
-                    throw Error ("No se ha podido realizar la peticion.")
-                }
-            }))
-        }
-    }
+    const pokemonArray = []
+    
+    for(let i = 1; i <= j; i++){
         
-    const pokemonArrayuso = pokemonArray.splice(numeroactual,20);
-    if(pokemonArrayuso.indexOf(pokemonArrayuso.length-1) == pokemonArray.indexOf(pokemonArray,length-1)){
-        numeroactual = -0.005;
-    }
-    await Promise.all(pokemonArrayuso)
-        .then(pokemons => {
-            borrarTabla(botonbusquedahecha);
-            console.log(pokemons)
-            const lisPokemons = pokemons.reduce((accumulator, pokemon) => {
-                numeroactual += 0.005;
-                accumulator += `
+            
+        pokemonArray.push(fetch(getPokemonUrl(i)).then(response =>{ 
+            if(response.ok){
+                return response.json()
+            }else{
+                throw Error ("No se ha podido realizar la peticion.")
+            }
+        }))
+        }
+    
+        await Promise.all(pokemonArray)
+            .then(pokemons => {
+
+                barra.innerHTML = `
+                
+                `
+                
+                
+                console.log(pokemons)
+                const lisPokemons = pokemons.reduce((accumulator, pokemon) => {
+                    accumulator += `
+                    
                     <div class='carta'>
                         <div class='img'>
-                            <img class='img-pok' height='210px' width='210px'; src='${pokemon.sprites.front_default}' alt ='Imagen de ${pokemon.name}'/>
+                            <img class='img-pok' height='210px' width='210px'; src='${pokemon.sprites.front_default}'/>
                         </div>
                         <div class='contenido-carta'>
                             <p>#${pokemon.id.toString().padStart(3,'0')}</p>
@@ -52,56 +52,76 @@ const fetchPokemon = async () => {
                         </div>
                     </div>
                     `
-                return accumulator
+                    return accumulator
                 }, '')
-            const div = document.getElementById('pok1')
-            div.innerHTML = lisPokemons
-        })
-}
+                const div = document.getElementById('pok1')
+                div.innerHTML = lisPokemons
+                
+            })
+    }
+fetchPokemon()
+
+
+
+
 
 
 const filtrar = async ()=>{
+    //console.log(formulario.value);
     const url =  `https://pokeapi.co/api/v2/pokemon/${formulario.value}`
     await fetch(url)
-        .then(response =>{
-            if(response.ok){
-                return response.json()
+    .then(response =>{
+    if(response.ok){
         
-            }else{
-                throw Error ("No se ha podido realizar la peticion.")
-            }
-        })
-        .then(data => {
-            let mensaje = document.getElementById('mensaje')
-            if(formulario.value == ""){
-                mensaje.innerHTML = `
-                <span class="errorvacio">Inserta algún valor válido.</span>
-                `
-            }else{
-                mensaje.innerHTML = `
-                    <span></span>
-                `
-                let pok = document.getElementById('pok')
-            
-            
-                try{
-                    var tipo = data.types[1].type.name;
-                }catch(error){
-                    var tipo = "";
-                }
+        return response.json()
+        
+    }else{
+        throw Error ("No se ha podido realizar la peticion.")
+    }
+    })
+    .then(data => {
 
-                var clase1 = tipo;
-                var clase = data.types[0].type.name;
-                pok.innerHTML = `
+       
+
+        let mensaje = document.getElementById('mensaje')
+        
+        if(formulario.value == ""){
+            
+            mensaje.innerHTML = `
+                <span class="errorvacio">Inserta algún valor válido.</span>
+            `
+            
+            
+        }else{
+            mensaje.innerHTML = `
+                <span></span>
+            `
+            let pok = document.getElementById('pok')
+            
+        
+        try{
+            var tipo = data.types[1].type.name;
+           }catch(error){
+               var tipo = "";
+           }
+
+        var clase1 = tipo;
+        var clase = data.types[0].type.name;
+       
+
+        
+        pok.innerHTML = `
        
         <div class='carta1'>
             <div class='img'>
-                <img class='img-pok' height='210px' width='210px'; src='${data.sprites.front_default}' alt ='Imagen de ${data.name}'/>
+                <img class='img-pok' height='210px' width='210px'; src='${data.sprites.front_default}'/>
             </div>
             <div class='contenido-carta'>
                 <p>#${data.id.toString().padStart(3,'0')}</p>
                 <div><p>Nombre: ${data.name}</p></div>
                 <div><p>EXP: ${data.base_experience}</p></div>
+
+                
                 <div class='tipo'>Tipo: <div class='tipo1'><span class='${clase}'>${data.types[0].type.name}<span></div>
                                         <div class='tipo2'><span class='${clase1}'> ${tipo}<span></div>
                 </div>
@@ -109,9 +129,11 @@ const filtrar = async ()=>{
                 <p>Altura: ${data.height}m<p>
             </div>
         </div>`
-                botonbusquedahecha = true;
-                barra.innerHTML = `
-            <table class='tabla-pok'>
+
+        barra.innerHTML = `
+            <table class='tabla-pok' >
+                
+                
             <thead>
                 
                     <th>${data.stats[0].stat.name} </th> 
@@ -136,17 +158,28 @@ const filtrar = async ()=>{
                 </tbody>
             </table>
         `
-            }
-
-            console.log(data)
-        })
-
-        .catch(err=>console.log(err))
+            
         
+        }
+        
+        
+        console.log(data)
+    })
+
+    .catch(err=>console.log(err))
+       
 }
 
-borrarTabla(botonbusquedahecha)
-fetchPokemon()
-botonbuscar.addEventListener('click',filtrar)
-botonnext.addEventListener('click',fetchPokemon)
-botonnext2.addEventListener('click',fetchPokemon)
+//boton event click tal
+
+
+boton.addEventListener('click',filtrar)
+
+// if( == null){
+//     let busqueda = document.getElementById('busqueda')
+//     busqueda.innerHTML = `
+//         <p>pon algo</p>
+//     `
+// }else{
+    
+// }
